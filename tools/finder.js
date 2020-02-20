@@ -6,6 +6,7 @@ async function init(symbol, btcQty, exchangeNames){
         let exchange = classMaker(exchangeName)
 
         let lastPrice = await exchange.currentPrice(symbol)
+
     }
 
 }

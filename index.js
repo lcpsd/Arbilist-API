@@ -1,8 +1,11 @@
-const finder = require('./tools/finder')
+const Express = require('express')
+const app = Express()
+const routes = require('./src/routes')
+const bp = require('body-parser')
 
-async function init(){
+app.use(bp.json())
+app.use(bp.urlencoded({extended: false}))
 
-    await finder('ETH/BTC', 0.002, ['binance'])
+app.use('/', routes)
 
-}
-init()
+app.listen(8787, () => console.log('serverOK'))

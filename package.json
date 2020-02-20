@@ -10,6 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ccxt": "^1.22.76"
+    "body-parser": "^1.19.0",
+    "ccxt": "^1.22.76",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
   }
 }

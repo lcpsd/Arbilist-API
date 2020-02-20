@@ -8,7 +8,7 @@ module.exports = {
 
         let adminObj = await admins_model.findOne({raw: true, where: { email: email}})
 
-        if(adminObj.length > 0 ){
+        if(adminObj != undefined){
             let compare = await bcrypt.compare(passwd, adminObj.passwd)
 
             if(compare) { req.session.email = email; return res.json({body: 'logged'}) }

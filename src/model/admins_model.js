@@ -12,6 +12,6 @@ let admin = db.define('admins',{
     }
 })
 
-//admin.sync({force: false})
+admin.sync({force: false})
 
 module.exports = admin

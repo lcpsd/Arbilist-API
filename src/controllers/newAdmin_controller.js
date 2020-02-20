@@ -6,11 +6,21 @@ module.exports = {
         let {email} = req.body
         let {passwd} = req.body
 
-        await admins.create({
+        let salt = await bcrypt.genSalt(10)
+        let hash = await bcrypt.hash(passwd, salt)
+
+        let find = await admins.findOne({raw:true, where: {email: email} })
+
+        if(find) return res.json({body: "admin_aready_exists"})
+
+        let adminCreation = await admins.create({
             email: email,
-            passwd: passwd
+            passwd: hash
         })
         
-        res.json({body: 'admin_created'})
+        if(adminCreation.dataValues) return res.json({body: 'admin_created'})
+
+        return res.json({body: 'error_at_register'})
+        
     }
 }

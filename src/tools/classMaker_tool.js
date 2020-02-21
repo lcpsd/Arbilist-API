@@ -1,14 +1,11 @@
 const ccxt  = require('ccxt')
-const credentials = require('../config/credentials.json')
 
-function init(exchangeName){
+function init(exchangeName, apiKey, secretKey){
     class exchangeClass{
         constructor(){
-
-            let credential = credentials[exchangeName]
-
+            
             this.exchangeCCXTclass = ccxt[exchangeName]
-            this.client = new this.exchangeCCXTclass(credential)
+            this.client = new this.exchangeCCXTclass({apiKey:apiKey, secret: secretKey})
         }
 
         async currentPrice(symbol){

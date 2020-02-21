@@ -8,7 +8,7 @@ module.exports = {
         let {symbol} = req.body
         let exchangeNames = new Array
 
-        let exchangeObjects = exchanges_model.findAll({raw: true})
+        let exchangeObjects = await exchanges_model.findAll({raw: true})
 
         for(let obj  of exchangeObjects){
             exchangeNames.push(obj.name)
@@ -22,19 +22,23 @@ module.exports = {
 
             if(exchangeObj){
                 let symbolObject = new Object
-            
-                let exchange = classMaker(exchangeName, exchangeObj.apiKey, exchangeObj.secretKey)
                 
-                let lastPrice = await exchange.currentPrice(symbol)
-                //let fees = await exchange.fees(symbol)
+                try{
+                    let exchange = classMaker(exchangeName, exchangeObj.apiKey, exchangeObj.secretKey)
+                    let lastPrice = await exchange.currentPrice(symbol)
+                    //let fees = await exchange.fees(symbol)
 
-                symbolObject["symbol"] = symbol
-                symbolObject["currentPrice"] = lastPrice
-                symbolObject["exchange"] = exchangeName
-                /* symbolObject["takerPercentage"] = fees.takerPercentage
-                symbolObject["FeeQty"] = fees.symbolFeeQty */
-        
-                symbolsArray.push(symbolObject)
+                    symbolObject["symbol"] = symbol
+                    symbolObject["currentPrice"] = lastPrice
+                    symbolObject["exchange"] = exchangeName
+                    /* symbolObject["takerPercentage"] = fees.takerPercentage
+                    symbolObject["FeeQty"] = fees.symbolFeeQty */
+            
+                    symbolsArray.push(symbolObject)
+                }catch{
+                    continue
+                }
+
             }else{
                 continue
             }

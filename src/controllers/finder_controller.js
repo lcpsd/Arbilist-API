@@ -1,13 +1,18 @@
 const classMaker = require('../tools/classMaker_tool')
 const diff_tool = require('../tools/diff_tool')
-let exchangeNames = require('../config/exchangesNames_config.json')
 const exchanges_model = require('../model/exchanges_model')
 
 module.exports = {
     async init(req, res){
         
         let {symbol} = req.body
-        exchangeNames = exchangeNames.array
+        let exchangeNames = new Array
+
+        let exchangeObjects = exchanges_model.findAll({raw: true})
+
+        for(let obj  of exchangeObjects){
+            exchangeNames.push(obj.name)
+        }
 
         //creates an array with all prices
         let symbolsArray = new Array

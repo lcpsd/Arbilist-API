@@ -10,8 +10,8 @@ router.post('/finder', finder_controller.init)
 //parms: symbol
 router.post('/adminLogin', admin_login.init)
 //parms: email, passwd
-router.post('/registerAdmin', adminAuth, newAdmin_controller.init)
+router.post('/registerAdmin', /*adminAuth,*/ newAdmin_controller.init)
 //parms: email, passwd
-router.post('/newExchange', adminAuth, newExchange_controller.init)
+router.post('/newExchange', /*adminAuth,*/ newExchange_controller.init)
 //parms: name, apiKey, secretKey
 module.exports = router

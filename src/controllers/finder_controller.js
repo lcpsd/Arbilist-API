@@ -70,7 +70,21 @@ module.exports = {
 
         }
 
-        return res.json(symbolsArray)
+        //sort objects
+        let sortedObjects = new Array
+        for(let value of arrayOfPrices){
+
+            for(let obj of symbolsArray){
+
+                if(value == obj.currentPrice){
+                    sortedObjects.push(obj)
+                }
+
+            }
+
+        }
+
+        return res.json(sortedObjects)
 
     }
 }

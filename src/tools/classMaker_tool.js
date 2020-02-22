@@ -10,14 +10,15 @@ function init(exchangeName, apiKey, secretKey){
 
         async currentPrice(symbol){
             let result = await this.client.fetchTicker(symbol)
-
-            if(exchangeName == 'coinbasepro'){
-                result = result.info
-                return parseFloat(result.price)
-            }
             result = result.info
-            result = parseFloat( result.lastPrice )
-            return result
+
+            const keysForPrice = ['pirce', 'lastPrice', 'last', 'price']
+
+            for(let key of keysForPrice) {
+                if(result[key] != null || result[key] != undefined){
+                    return parseFloat( result[key] )
+                }
+            }
         }
 
         async fees(symbol){

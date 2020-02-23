@@ -1,12 +1,18 @@
 const classMaker = require('../tools/classMaker_tool')
 const diff_tool = require('../tools/diff_tool')
 const exchanges_model = require('../model/exchanges_model')
+let symbolsList = require('../config/symbolsList.json')
 
 module.exports = {
     async init(req, res){
         
         let {symbol} = req.body
         let exchangeNames = new Array
+
+        symbolsList = symbolsList.symbols
+        let checkSymbol = symbolsList.includes(symbol)
+
+        if(!checkSymbol) return res.json({body: "symbol_not_supported"})
 
         let exchangeObjects = await exchanges_model.findAll({raw: true})
 

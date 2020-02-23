@@ -64,7 +64,7 @@ module.exports = {
         let minorValue = arrayOfPrices[0]
         while(i <= arrayOfPrices.length){
             let valueDiff = diff_tool(arrayOfPrices[i], minorValue)
-            valueDiff = parseFloat( ( valueDiff * 1000 ).toFixed(2) )
+            valueDiff = parseFloat( ( valueDiff * 100 ).toFixed(2) )
 
             for(let obj of symbolsArray){
                 if(obj.currentPrice == arrayOfPrices[i]){

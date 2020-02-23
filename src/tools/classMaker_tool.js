@@ -12,6 +12,10 @@ function init(exchangeName, apiKey, secretKey){
             let result = await this.client.fetchTicker(symbol)
             result = result.info
 
+            if(exchangeName == 'bitforex'){
+                console.log(info)
+            }
+
             const keysForPrice = ['pirce', 'lastPrice', 'last', 'price']
 
             for(let key of keysForPrice) {

@@ -5,6 +5,7 @@ const diff_tool = require('../tools/diff_tool')
 async function init(req, res, exchanges_model){
     
     let {symbol} = req.body
+    let {btcQty} = req.body
     let exchangeNames = new Array
 
     let exchangeObjects = await exchanges_model.findAll({raw: true})
@@ -32,7 +33,8 @@ async function init(req, res, exchanges_model){
                 symbolObject["exchange"] = exchangeName
                 /* symbolObject["takerPercentage"] = fees.takerPercentage
                 symbolObject["FeeQty"] = fees.symbolFeeQty */
-        
+                symbolObject["coinsQty"] = parseFloat(symbolObject.currentPrice) / parseFloat(btcQty)
+
                 symbolsArray.push(symbolObject)
             }catch{
                 continue

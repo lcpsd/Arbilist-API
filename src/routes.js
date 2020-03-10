@@ -1,19 +1,18 @@
 const Express = require('express')
 const router = Express.Router()
-const finder_controller = require('./controllers/finder_controller')
-const newAdmin_controller = require('./controllers/newAdmin_controller')
-const admin_login = require('./controllers/adminLogin_controller')
-const adminAuth = require('./middlewares/adminAuth')
-const newExchange_controller = require('./controllers/newExchange_controller')
-const listExchanges_controller = require('./controllers/listExchanges_controller')
 
-router.post('/finder', finder_controller.init)
-//parms: symbol
-router.post('/adminLogin', admin_login.init)
+const adminController = require("./controllers/admin_controller")
+const exchangesController = require("./controllers/exchanges_controller")
+const adminAuth = require("./middlewares/adminAuth")
+
+router.post('/finder', exchangesController.finder)
+//parms: symbol ( LTC/BTC )
+router.post('/adminlogin', adminController.adminLogin)
 //parms: email, passwd
-router.post('/registerAdmin', adminAuth, newAdmin_controller.init)
+router.post('/registeradmin', adminAuth, adminController.newAdmin)
 //parms: email, passwd
-router.post('/newExchange', adminAuth, newExchange_controller.init)
+router.post('/newexchange', adminAuth, exchangesController.newExchange)
 //parms: name, apiKey, secretKey
-router.get('/exchanges',adminAuth, listExchanges_controller.init)
+router.get('/listexchanges',adminAuth, exchangesController.list)
+//parms: none
 module.exports = router

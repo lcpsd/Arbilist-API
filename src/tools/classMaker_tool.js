@@ -12,7 +12,7 @@ function init(exchangeName, apiKey, secretKey){
             let result = await this.client.fetchTicker(symbol)
             result = result.info
 
-            const keysForPrice = ['pirce', 'lastPrice', 'last', 'price']
+            const keysForPrice = ['pirce', 'lastPrice', 'last', 'price', 'close']
 
             for(let key of keysForPrice) {
                 if(result[key] != null || result[key] != undefined){

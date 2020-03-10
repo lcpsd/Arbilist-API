@@ -1,0 +1,30 @@
+{
+    "symbols":
+    [
+        "ETH/BTC",
+        "XRP/BTC",
+        "BTC/USDT",
+        "LTC/BTC",
+        "EOS/BTC",
+        "BNB/BTC",
+        "XLM/BTC",
+        "TRX/BTC",
+        "ADA/BTC",
+        "XMR/BTC",
+        "XTZ/BTC",
+        "LINK/BTC",
+        "NEO/BTC",
+        "IOTA/BTC",
+        "DASH/BTC",
+        "ETC/BTC",
+        "DCR/BTC",
+        "ZRX/BTC",
+        "NANO/BTC",
+        "THETA/BTC",
+        "WAVES/BTC",
+        "BTT/BTC",
+        "SNT/BTC",
+        "REP/BTC",
+        "ATOM/BTC"
+    ]
+}

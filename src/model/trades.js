@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     exchangeSell: DataTypes.STRING
   }, {});
   Trades.associate = function(models) {
-    // associations can be defined here
+    Trades.belongsTo(models.User, {foreignKey:'userId', as:'owner'})
   };
   return Trades;
 };

@@ -1,4 +1,4 @@
-let adminModel = require('../model/admin')
+let adminModel = require('../model/index')["Admin"]
 
 async function init (req, res, next){
 

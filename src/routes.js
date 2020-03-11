@@ -11,7 +11,7 @@ router.post('/finder', exchangesController.finder)
 //parms: symbol ( LTC/BTC )
 router.post('/adminlogin', adminController.adminLogin)
 //parms: email, passwd
-router.post('/registeradmin', /*adminAuth,*/ adminController.newAdmin)
+router.post('/registeradmin', adminController.newAdmin)
 //parms: email, passwd
 router.post('/newexchange', adminAuth, exchangesController.newExchange)
 //parms: name, apiKey, secretKey

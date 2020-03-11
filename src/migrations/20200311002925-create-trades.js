@@ -1,20 +1,23 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Exchanges', {
+    return queryInterface.createTable('Trades', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
+      buyValue: {
+        type: Sequelize.FLOAT
+      },
+      sellValue: {
+        type: Sequelize.FLOAT
+      },
+      exchangeBuy: {
         type: Sequelize.STRING
       },
-      apiKey: {
-        type: Sequelize.STRING
-      },
-      secretKey: {
+      exchangeSell: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -28,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Exchanges');
+    return queryInterface.dropTable('Trades');
   }
 };

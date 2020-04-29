@@ -1,1 +1,1 @@
-# <h1> arbilist it's a web app to get prices of a cryptocurrency and show to user the best sites to buy and sell. it's an app for arbitrage </h1> 
+# <h1>Arbilist é uma API que recupera e compara valores de diversas exchanges para mostrar os melhores preços de compra e vende de criptomoedas</h1> 

@@ -1,7 +1,8 @@
-# <h4>Arbilist é uma API que recupera e compara valores de diversas exchanges para mostrar os melhores preços de compra e vende de criptomoedas</h4> 
+<h1 align="center"> Arbilist API </h1>
+
+# <h4>API que recupera e compara valores de diferentes exchanges cadastradas para mostrar os melhores preços de compra e venda com o intuíto de ajudar em operações de arbitragem com criptomoedas</h4> 
 
 <div>
-  <h1 align="center"> Simple Projects API </h1>
   <p>Projeto api simples que registra projetos e tarefas para os mesmos.</p>
   <table>
     <tbody><tr>

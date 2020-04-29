@@ -13,9 +13,9 @@ router.post('/adminlogin', adminController.adminLogin)
 //parms: email, passwd
 router.post('/registeradmin', adminController.newAdmin)
 //parms: email, passwd
-router.post('/newexchange', adminAuth, exchangesController.newExchange)
+router.post('/newexchange', /*adminAuth*/, exchangesController.newExchange)
 //parms: name, apiKey, secretKey
-router.get('/listexchanges',adminAuth, exchangesController.list)
+router.get('/listexchanges',/*adminAuth*/, exchangesController.list)
 //parms: none
 router.post('/newUser', userController.newUser)
 //parms: email, passwd

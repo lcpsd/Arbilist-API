@@ -3,7 +3,6 @@
 # <h4>API que recupera e compara valores de diferentes exchanges cadastradas para mostrar os melhores preços de compra e venda com o intuíto de ajudar em operações de arbitragem com criptomoedas</h4> 
 
 <div>
-  <p>Projeto api simples que registra projetos e tarefas para os mesmos.</p>
   <table>
     <tbody><tr>
       <th>Método</th>

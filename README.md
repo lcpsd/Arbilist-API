@@ -25,4 +25,9 @@
       <td>Lista as exchanges cadastradas. </td>
     </tr>
   </tbody></table>
+  
+  <h2>Pendências</h2>
+  <ul>
+    <li>Criar relacionamento no banco de dados para cadastrar exchanges de acordo com o usuário logado<li>
+  </ul>
 </div>

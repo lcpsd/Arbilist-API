@@ -1,19 +1,9 @@
-let adminModel = require('../model/index')["Admin"]
+function init(req, res, next){
+	if(!req.session.admin){
+		return res.json({msg:'unauthorized'})
+	}
 
-async function init (req, res, next){
-
-    let adminObjects = await adminModel.findAll({raw: true})
-
-    let allAdminEmails = new Array
-
-    for(let obj of adminObjects){
-        allAdminEmails.push(obj.email)
-    }
-
-    if(req.session.email != undefined && allAdminEmails.includes(req.session.email)){
-        return next()
-    }
-    return res.json({err: "unautorized"})
+	next()
 }
 
 module.exports = init

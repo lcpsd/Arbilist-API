@@ -1,18 +1,20 @@
 
 async function newExchange(req, exchanges_model){
-    let {name} = req.body
-    let {apiKey} = req.body
-    let {secretKey} = req.body
 
-    let findOne = await exchanges_model.findOne({where: {name: name}})
+    let findOne = await exchanges_model.findOne({
+        where: {
+            name: req.body.name, userId: req.session.userId
+        }
+    })
 
-    if(findOne) return {body: "exchange_aready_exists"}
+    if(findOne) return {error: "exchange_aready_exists"}
 
     try{
         await exchanges_model.create({
-            name:name,
-            apiKey: apiKey,
-            secretKey: secretKey
+            name: req.body.name,
+            apiKey: req.body.apiKey,
+            secretKey: req.body.secretKey,
+            userId: req.session.userId
         })
 
         return {success: "exchange_created"}

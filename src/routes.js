@@ -82,8 +82,8 @@ const exchanges_controller = require("./controllers/exchanges")
 //Exchange Validators
 
 //Exchange Routes
-router.post('/exchange/search', exchanges_controller.search)
-//
+router.get('/exchange/search', exchanges_controller.search)
+//{symbol: string, btcQty: string}
 
 router.post('/exchange/new', userAuth, exchanges_controller.newExchange)
 //{name: string, publicKey: string, secretKey: string}
@@ -91,9 +91,9 @@ router.post('/exchange/new', userAuth, exchanges_controller.newExchange)
 router.get('/exchange/list', userAuth, exchanges_controller.list)
 //
 
-router.get('/exchange/update/name', userAuth, exchanges_controller.updateName)
+router.post('/exchange/update/name', userAuth, exchanges_controller.updateName)
 //{oldName: string, newName: string}
 
-router.get('/exchange/update/name', userAuth, exchanges_controller.updateName)
+router.post('/exchange/update/name', userAuth, exchanges_controller.updateName)
 //{name: string, publicKey: string, privateKey}
 module.exports = router

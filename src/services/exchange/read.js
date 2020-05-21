@@ -1,5 +1,5 @@
 
-async function listExchanges(req, exchanges_model){
+async function read(req, exchanges_model){
     
     try{
         return {success: await exchanges_model.findAll({
@@ -11,4 +11,4 @@ async function listExchanges(req, exchanges_model){
     
 }
 
-module.exports = listExchanges
+module.exports = read

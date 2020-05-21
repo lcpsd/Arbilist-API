@@ -16,16 +16,19 @@
       <th>Método</th>
       <th>Rota</th>
       <th>Descrição</th>
+      <th>Parâmetros ( JSON )</th>
     </tr>
     <tr>
       <td>POST</td>
       <td>/finder</td>
-      <td>Procura por preços. body: {"symbol":"str/str"}. Ex: "LTC/BTC"</td>
+      <td>Procura por preços. </td>
+      <td> {"symbol":"str/str"}. Ex: "LTC/BTC" </td>
     </tr>
     <tr>
       <td>POST</td>
       <td>/newexchange</td>
-      <td>Adiciona uma nova exchange. body:{"name":"string", "apikey":"string", "secretKey":"string"}</td>
+      <td>Adiciona uma nova exchange. </td>
+      <td> {"name":"string", "apikey":"string", "secretKey":"string"}</td>
     </tr>
     <tr>
       <td>GET</td>

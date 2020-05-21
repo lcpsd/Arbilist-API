@@ -46,6 +46,8 @@
     <li>Nodemon (dev)</li>
     <li>Sequelize-cli</li>
     <li>CCXT</li>
+    <li>Express-session</li>
+    <li>Bcryptjs</li>
   </ul>
 </div>
 

@@ -82,13 +82,13 @@ const exchanges_controller = require("./controllers/exchanges")
 //Exchange Validators
 
 //Exchange Routes
-router.post('/exchange/search', exchangesController.finder)
+router.post('/exchange/search', exchanges_controller.search)
 //
 
-router.post('/exchange/new', userAuth, exchangesController.newExchange)
-//
+router.post('/exchange/new', userAuth, exchanges_controller.newExchange)
+//{name: string, publicKey: string, secretKey: string}
 
-router.get('/exchange/list', userAuth, exchangesController.list)
+router.get('/exchange/list', userAuth, exchanges_controller.list)
 //
 
 module.exports = router

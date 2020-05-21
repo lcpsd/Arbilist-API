@@ -1,8 +1,7 @@
 const classMaker = require('../tools/classMaker_tool')
 const diff_tool = require('../tools/diff_tool')
 
-
-async function init(req, res, exchanges_model){
+async function init(req, exchanges_model){
     
     let {symbol} = req.body
     let {btcQty} = req.body
@@ -20,30 +19,27 @@ async function init(req, res, exchanges_model){
 
         let exchangeObj  = await exchanges_model.findOne({ raw: true, where:{ name:exchangeName }})
 
-        if(exchangeObj){
-            let symbolObject = new Object
+        if(!exchangeObj) continue
+
+        let symbolObject = new Object
             
-            try{
-                let exchange = classMaker(exchangeName, exchangeObj.apiKey, exchangeObj.secretKey)
-                let lastPrice = await exchange.currentPrice(symbol)
-                //let fees = await exchange.fees(symbol)
+        try{
+            let exchange = classMaker(exchangeName, exchangeObj.apiKey, exchangeObj.secretKey)
+            let lastPrice = await exchange.currentPrice(symbol)
+            //let fees = await exchange.fees(symbol)
 
-                symbolObject["symbol"] = symbol
-                symbolObject["currentPrice"] = lastPrice
-                symbolObject["exchange"] = exchangeName
-                /* symbolObject["takerPercentage"] = fees.takerPercentage
-                symbolObject["FeeQty"] = fees.symbolFeeQty */
-                symbolObject["coinsQty"] = parseFloat(symbolObject.currentPrice) / parseFloat(btcQty)
+            symbolObject["symbol"] = symbol
+            symbolObject["currentPrice"] = lastPrice
+            symbolObject["exchange"] = exchangeName
+            /* symbolObject["takerPercentage"] = fees.takerPercentage
+            symbolObject["FeeQty"] = fees.symbolFeeQty */
+            symbolObject["coinsQty"] = parseFloat(symbolObject.currentPrice) / parseFloat(btcQty)
 
-                symbolsArray.push(symbolObject)
-            }catch{
-                continue
-            }
-
-        }else{
+            symbolsArray.push(symbolObject)
+        }catch{
             continue
         }
-
+            
     }
     
     let arrayOfPrices = new Array

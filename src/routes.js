@@ -80,20 +80,28 @@ routes.put('/admin/update/passwd', updateAdminPasswdMid, adminAuth, admin_contro
 const exchanges_controller = require("./controllers/exchanges")
 
 //Exchange Validators
+const deleteExchangeMid = require('./validators/middlewares/exchanges/delete')
+const newExchangeMid = require('./validators/middlewares/exchanges/delete')
+const searchExchangeMid = require('./validators/middlewares/exchanges/delete')
+const updateKeysExchangeMid = require('./validators/middlewares/exchanges/delete')
+const updateNameExchangeMid = require('./validators/middlewares/exchanges/delete')
 
 //Exchange Routes
-router.get('/exchange/search', exchanges_controller.search)
+router.get('/exchange/search', userAuth, searchExchangeMid, exchanges_controller.search)
 //{symbol: string, btcQty: string}
 
-router.post('/exchange/new', userAuth, exchanges_controller.newExchange)
+router.post('/exchange/new', userAuth, newExchangeMid, exchanges_controller.newExchange)
 //{name: string, publicKey: string, secretKey: string}
 
-router.get('/exchange/list', userAuth, exchanges_controller.list)
+router.get('/exchange/list', userAuth, exchanges_controller.read)
 //
 
-router.post('/exchange/update/name', userAuth, exchanges_controller.updateName)
+router.post('/exchange/update/name', userAuth, updateNameExchangeMid, exchanges_controller.updateName)
 //{oldName: string, newName: string}
 
-router.post('/exchange/update/name', userAuth, exchanges_controller.updateName)
+router.post('/exchange/update/keys', userAuth, updateKeysExchangeMid, exchanges_controller.updateKeys)
 //{name: string, publicKey: string, privateKey}
+
+router.post('/exchange/delete', userAuth, deleteExchangeMid, exchanges_controller.delete)
+//{name: string}
 module.exports = router

@@ -1,5 +1,8 @@
 const Express = require('express')
-const router = Express.Router()
+const routes = Express.Router()
+
+//General Controllers
+const login_controller = require('./controllers/login')
 
 //User Controllers
 const user_controller = require('./controllers/user')
@@ -7,7 +10,6 @@ const user_controller = require('./controllers/user')
 //User middlewares
 const userAuth = require('./middlewares/userAuth')
 const adminAuth = require('./middlewares/adminAuth')
-const planValidity = require('./middlewares/planValidity')
 
 //validators
 const loginUserMid = require('./validators/middlewares/user/delete')
@@ -24,7 +26,7 @@ routes.post('/user/new', newUserMid, user_controller.create)
 routes.post('/user', adminAuth, user_controller.readAll)
 //{startId: int, endId: int}
         
-routes.post('/user/login', loginUserMid, planValidity, login_controller.userLogin)
+routes.post('/user/login', loginUserMid, login_controller.userLogin)
 //{email: string, passwd: string}
         
 routes.put('/user/update/email',updateUserEmailMid, userAuth, user_controller.updateEmail)
@@ -87,21 +89,21 @@ const updateKeysExchangeMid = require('./validators/middlewares/exchanges/delete
 const updateNameExchangeMid = require('./validators/middlewares/exchanges/delete')
 
 //Exchange Routes
-router.get('/exchange/search', userAuth, searchExchangeMid, exchanges_controller.search)
+routes.get('/exchange/search', userAuth, searchExchangeMid, exchanges_controller.search)
 //{symbol: string, btcQty: string}
 
-router.post('/exchange/new', userAuth, newExchangeMid, exchanges_controller.newExchange)
+routes.post('/exchange/new', userAuth, newExchangeMid, exchanges_controller.create)
 //{name: string, publicKey: string, secretKey: string}
 
-router.get('/exchange/list', userAuth, exchanges_controller.read)
+routes.get('/exchange/list', userAuth, exchanges_controller.read)
 //
 
-router.post('/exchange/update/name', userAuth, updateNameExchangeMid, exchanges_controller.updateName)
+routes.post('/exchange/update/name', userAuth, updateNameExchangeMid, exchanges_controller.updateName)
 //{oldName: string, newName: string}
 
-router.post('/exchange/update/keys', userAuth, updateKeysExchangeMid, exchanges_controller.updateKeys)
+routes.post('/exchange/update/keys', userAuth, updateKeysExchangeMid, exchanges_controller.updateKeys)
 //{name: string, publicKey: string, privateKey}
 
-router.post('/exchange/delete', userAuth, deleteExchangeMid, exchanges_controller.delete)
+routes.post('/exchange/delete', userAuth, deleteExchangeMid, exchanges_controller.delete)
 //{name: string}
-module.exports = router
+module.exports = routes

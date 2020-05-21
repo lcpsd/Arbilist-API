@@ -4,10 +4,10 @@ const user_model = models['User']
 //userServices
 
 const userValidator = require('../validators/generic')
-const create_service = require('../services/user/createUser')
+const create_service = require('../services/user/create')
 const update_service = require('../services/user/update')
 const readAll_service = require('../services/user/readUsers')
-const delete_service = require('../services/user/deleteUser')
+const delete_service = require('../services/user/delete')
 
 class User{
     

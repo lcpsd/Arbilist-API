@@ -1,4 +1,4 @@
-async function init(req, res, next){
+function init(req, res, next){
     if(!req.body.symbol){
 		return res.json({msg:'missing_parameter_symbol'})
     }
@@ -9,3 +9,5 @@ async function init(req, res, next){
 
 	next()
 }
+
+module.exports = init

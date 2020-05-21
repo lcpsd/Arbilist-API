@@ -1,11 +1,11 @@
 const Database = require("../models/index")
 const exchangesModel = Database["Exchange"]
 
-const new_service = require("../exchange/services/exchange/new")
-const read_service = require('../exchange/services/exchange/readAll')
-const update_service = require('../exchange/services/exchange/update')
-const delete_service = require('../exchange/services/exchange/delete')
-const search_service = require('../exchange/services/search')
+const new_service = require('../services/exchange/new')
+const read_service = require('../services/exchange/read')
+const update_service = require('../services/exchange/update')
+const delete_service = require('../services/exchange/delete')
+const search_service = require('../services/exchange/search')
 
 class exchangesController{
 

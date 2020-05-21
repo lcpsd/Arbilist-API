@@ -1,5 +1,5 @@
-const classMaker = require('../tools/classMaker_tool')
-const diff_tool = require('../tools/diff_tool')
+const classMaker = require('../../tools/classMaker_tool')
+const diff_tool = require('../../tools/diff_tool')
 
 async function init(req, exchanges_model){
     
@@ -7,7 +7,7 @@ async function init(req, exchanges_model){
     let {btcQty} = req.body
     let exchangeNames = new Array
 
-    let exchangeObjects = await exchanges_model.findAll({raw: true})
+    let exchangeObjects = await exchanges_model.findAll({raw: true}, {where: {userId: req.session.userId}})
 
     for(let obj  of exchangeObjects){
         exchangeNames.push(obj.name)
@@ -17,7 +17,11 @@ async function init(req, exchanges_model){
     let symbolsArray = new Array
     for(let exchangeName of exchangeNames){
 
-        let exchangeObj  = await exchanges_model.findOne({ raw: true, where:{ name:exchangeName }})
+        let exchangeObj  = await exchanges_model.findOne({ 
+            raw: true, 
+            where:{ 
+                name:exchangeName, userId: req.session.diff 
+            }})
 
         if(!exchangeObj) continue
 

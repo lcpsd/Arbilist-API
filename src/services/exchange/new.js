@@ -1,5 +1,5 @@
 
-async function newExchange(req, exchanges_model){
+async function init(req, exchanges_model){
 
     let findOne = await exchanges_model.findOne({
         where: {
@@ -25,4 +25,4 @@ async function newExchange(req, exchanges_model){
 
 }
 
-module.exports = newExchange
+module.exports = init

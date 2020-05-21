@@ -1,4 +1,4 @@
-async function init(req, res, next){
+function init(req, res, next){
     if(!req.body.name){
 		return res.json({msg:'missing_parameter_name'})
     }
@@ -13,3 +13,5 @@ async function init(req, res, next){
 
 	next()
 }
+
+module.exports = init

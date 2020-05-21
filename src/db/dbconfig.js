@@ -1,26 +1,29 @@
 module.exports = {
   "development": {
-    "username": "arbilist",
-    "password": "12345678",
+    "username": "postgres",
+    "password": "root",
     "database": "arbilist",
     "host": "127.0.0.1",
-    "dialect": "mysql",
+    "dialect": "postgres",
+    "port":"5433",
     "operatorsAliases": false
   },
   "test": {
-    "username": "arbilist",
-    "password": "12345678",
+    "username": "postgres",
+    "password": "root",
     "database": "arbilist",
     "host": "127.0.0.1",
-    "dialect": "mysql",
+    "dialect": "postgres",
+    "port":"5433",
     "operatorsAliases": false
   },
   "production": {
-    "username": "arbilist",
-    "password": "12345678",
+    "username": "postgres",
+    "password": "root",
     "database": "arbilist",
     "host": "127.0.0.1",
-    "dialect": "mysql",
+    "dialect": "postgres",
+    "port":"5433",
     "operatorsAliases": false
   }
 }

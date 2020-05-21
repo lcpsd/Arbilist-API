@@ -42,6 +42,7 @@
     <li>Sequelize</li>
     <li>Nodemon (dev)</li>
     <li>Sequelize-cli</li>
+    <li>CCXT</li>
   </ul>
 </div>
 

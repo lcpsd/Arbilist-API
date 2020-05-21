@@ -5,6 +5,7 @@
 <h4>Instruções</h4>
   <ul>
     <li>npm install: instala todos os pacotes</li>
+    <li>npx sequelize db:seed:all : Preenche o banco de dados com api's para o consumo</li>
     <li>nodemon index: inicia a aplicação na porta 8787</li>
   </ul>
 </h4>
@@ -40,6 +41,7 @@
     <li>Mysql2</li>
     <li>Sequelize</li>
     <li>Nodemon (dev)</li>
+    <li>Sequelize-cli</li>
   </ul>
 </div>
 

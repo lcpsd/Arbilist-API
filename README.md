@@ -2,6 +2,13 @@
 
 # <h4>API que recupera e compara valores de diferentes exchanges cadastradas para mostrar os melhores preços de compra e venda com o intuíto de ajudar em operações de arbitragem com criptomoedas</h4> 
 
+<h4>Instruções</h4>
+  <ul>
+    <li>npm install: instala todos os pacotes</li>
+    <li>nodemon index: inicia a aplicação na porta 8787</li>
+  </ul>
+</h4>
+
 <div>
   <table>
     <tbody><tr>
@@ -26,8 +33,14 @@
     </tr>
   </tbody></table>
   
-  <h2>Pendências</h2>
+  <h4>Bibliotecas Utilizadas</h4>
+ 
   <ul>
-    <li>Criar relacionamento no banco de dados para cadastrar exchanges de acordo com o usuário logado</li>
+    <li>Express</li>
+    <li>Mysql2</li>
+    <li>Sequelize</li>
+    <li>Nodemon (dev)</li>
   </ul>
 </div>
+
+

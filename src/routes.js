@@ -91,4 +91,6 @@ router.post('/exchange/new', userAuth, exchanges_controller.newExchange)
 router.get('/exchange/list', userAuth, exchanges_controller.list)
 //
 
+router.get('/exchange/update/name', userAuth, exchanges_controller.updateName)
+//{oldName: string, newName: string}
 module.exports = router

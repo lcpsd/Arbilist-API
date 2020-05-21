@@ -1,9 +1,14 @@
 
 async function listExchanges(req, exchanges_model){
     
-    let exchanges = await exchanges_model.findAll({raw: true})
+    try{
+        return {success: await exchanges_model.findAll({
+            raw: true, where: {userId: req.session.userId}
+        })}
+    }catch(error){
+        return {error: error}
+    }
     
-    return {success: exchanges}
 }
 
 module.exports = listExchanges

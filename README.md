@@ -88,7 +88,7 @@
       </tr>
       <tr>
         <td>PUT</td>
-        <td>/exchange/update/keysd</td>
+        <td>/exchange/update/keys</td>
         <td>Atualiza as chaves de uma exchange</td>
         <td>publicKey: string, privateKey: string</td>
       </tr>

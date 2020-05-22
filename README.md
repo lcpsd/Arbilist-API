@@ -4,9 +4,13 @@
 
 <h4>Instruções</h4>
   <ul>
-    <li>npm install: instala todos os pacotes</li>
-    <li>npx sequelize db:seed:all : Preenche o banco de dados com api's para o consumo</li>
-    <li>nodemon index: inicia a aplicação na porta 8787</li>
+    <li>Crie um banco com o nome "arbilist" no mysql</li>
+    <li>Execute os seguintes comandos na pasta do projeto através terminal:</li>
+    <ul>
+      <li>npm install  ( instala todos os pacotes )</li>
+      <li>npx sequelize db:seed:all ( Preenche o banco de dados com api's para o consumo )</li>
+      <li>nodemon index ( inicia a aplicação na porta 8787 )</li>
+    </ul>
   </ul>
 </h4>
 
@@ -41,10 +45,10 @@
  
   <ul>
     <li>Express</li>
-    <li>Mysql2</li>
+    <li>mysql2</li>
     <li>Sequelize</li>
     <li>Nodemon (dev)</li>
-    <li>Sequelize-cli</li>
+    <li>Sequelize-cli (dev)</li>
     <li>CCXT</li>
     <li>Express-session</li>
     <li>Bcryptjs</li>

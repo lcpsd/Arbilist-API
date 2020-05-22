@@ -1,9 +1,9 @@
-async function init (req, res, next){
+function init(req, res, next){
+	if(!req.session.email){
+		return res.json({msg:'unauthorized'})
+	}
 
-    if(req.session.email != undefined ){
-        return next()
-    }
-    return res.json({err: "unautorized"})
+	next()
 }
 
 module.exports = init

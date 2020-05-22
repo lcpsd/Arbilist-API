@@ -12,7 +12,7 @@ const userAuth = require('./middlewares/userAuth')
 const adminAuth = require('./middlewares/adminAuth')
 
 //validators
-const loginUserMid = require('./validators/middlewares/user/delete')
+const loginUserMid = require('./validators/middlewares/user/login')
 const newUserMid = require('./validators/middlewares/user/new')
 const updateUserEmailMid = require('./validators/middlewares/user/updateEmail')
 const updateUserPassMid = require('./validators/middlewares/user/updatePass')
@@ -28,13 +28,13 @@ routes.post('/user', adminAuth, user_controller.readAll)
 routes.post('/user/login', loginUserMid, login_controller.userLogin)
 //{email: string, passwd: string}
         
-routes.put('/user/update/email',updateUserEmailMid, userAuth, user_controller.updateEmail)
+routes.put('/user/update/email', updateUserEmailMid, userAuth, user_controller.updateEmail)
 //{ newEmail: string, passwd: string }
 
-routes.put('/user/update/passwd',updateUserPassMid, userAuth, user_controller.updatePass)
+routes.put('/user/update/passwd', updateUserPassMid, userAuth, user_controller.updatePass)
 //{ passwd: string , newPass: string }
         
-routes.delete('/user/delete',deleteUserMid, userAuth, user_controller.delete)
+routes.delete('/user/delete', deleteUserMid, userAuth, user_controller.delete)
 //{ passwd: string }
 
 routes.get('/user/session', userAuth, user_controller.sessionData)
@@ -79,14 +79,14 @@ const exchanges_controller = require("./controllers/exchanges")
 
 //Exchange Validators
 const deleteExchangeMid = require('./validators/middlewares/exchanges/delete')
-const newExchangeMid = require('./validators/middlewares/exchanges/delete')
-const searchExchangeMid = require('./validators/middlewares/exchanges/delete')
-const updateKeysExchangeMid = require('./validators/middlewares/exchanges/delete')
-const updateNameExchangeMid = require('./validators/middlewares/exchanges/delete')
+const newExchangeMid = require('./validators/middlewares/exchanges/new')
+const searchExchangeMid = require('./validators/middlewares/exchanges/search')
+const updateKeysExchangeMid = require('./validators/middlewares/exchanges/updateKeys')
+const updateNameExchangeMid = require('./validators/middlewares/exchanges/updateName')
 
 //Exchange Routes
 routes.get('/exchange/search', userAuth, searchExchangeMid, exchanges_controller.search)
-//{symbol: string, btcQty: string}
+//{symbol: string (XXX/YYY), btcQty: float / int}
 
 routes.post('/exchange/new', userAuth, newExchangeMid, exchanges_controller.create)
 //{name: string, publicKey: string, secretKey: string}
@@ -94,12 +94,12 @@ routes.post('/exchange/new', userAuth, newExchangeMid, exchanges_controller.crea
 routes.get('/exchange/list', userAuth, exchanges_controller.read)
 //
 
-routes.post('/exchange/update/name', userAuth, updateNameExchangeMid, exchanges_controller.updateName)
-//{oldName: string, newName: string}
+routes.put('/exchange/update/name', userAuth, updateNameExchangeMid, exchanges_controller.updateName)
+//{name: string, newName: string}
 
-routes.post('/exchange/update/keys', userAuth, updateKeysExchangeMid, exchanges_controller.updateKeys)
-//{name: string, publicKey: string, privateKey}
+routes.put('/exchange/update/keys', userAuth, updateKeysExchangeMid, exchanges_controller.updateKeys)
+//{name: string, publicKey: string, privateKey: string}
 
-routes.post('/exchange/delete', userAuth, deleteExchangeMid, exchanges_controller.delete)
+routes.delete('/exchange/delete', userAuth, deleteExchangeMid, exchanges_controller.delete)
 //{name: string}
 module.exports = routes

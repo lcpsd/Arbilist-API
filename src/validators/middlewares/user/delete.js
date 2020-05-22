@@ -4,7 +4,7 @@ const userModel = models['User']
 
 async function init(req, res, next){
 
-	const checkExists = await validator.checkEmail(req.body.email, userModel)
+	const checkExists = await validator.checkEmail(req.session.email, userModel)
 
 	if(!checkExists) return res.json({error:"not_registered"})
 

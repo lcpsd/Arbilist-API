@@ -1,5 +1,5 @@
 class init{
-    async updateName(req, exchangeModel){
+    async name(req, exchangeModel){
         try{
             await exchangeModel.update(
                 {
@@ -15,7 +15,7 @@ class init{
         }
     }
     
-    async updateKeys(req, exchangeModel){
+    async keys(req, exchangeModel){
         try{
             await exchangeModel.update(
                 {

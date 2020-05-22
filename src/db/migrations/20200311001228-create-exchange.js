@@ -12,11 +12,11 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false
       },
-      apiKey: {
+      publicKey: {
         type: Sequelize.STRING,
         allowNull: false
       },
-      secretKey: {
+      privateKey: {
         type: Sequelize.STRING,
         allowNull: false
       },

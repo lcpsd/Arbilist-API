@@ -8,7 +8,8 @@
     <li>Execute os seguintes comandos na pasta do projeto através terminal:</li>
     <ul>
       <li>npm install  ( instala todos os pacotes )</li>
-      <li>npx sequelize db:seed:all ( Preenche o banco de dados com api's para o consumo )</li>
+      <li>npm install -g mysql2 ( instala o pacote mysql de forma global )
+      <li>npx sequelize db:seed:all ( Preenche o banco de dados com api's para o consumo ) e um usuário: "test@test":"123</li>
       <li>nodemon index ( inicia a aplicação na porta 8787 )</li>
     </ul>
   </ul>
@@ -16,30 +17,46 @@
 
 <div>
   <table>
-    <tbody><tr>
-      <th>Método</th>
-      <th>Rota</th>
-      <th>Descrição</th>
-      <th>Parâmetros ( JSON )</th>
-    </tr>
-    <tr>
-      <td>POST</td>
-      <td>/finder</td>
-      <td>Procura por preços. </td>
-      <td> {"symbol":"str/str"}. Ex: "LTC/BTC" </td>
-    </tr>
-    <tr>
-      <td>POST</td>
-      <td>/newexchange</td>
-      <td>Adiciona uma nova exchange. </td>
-      <td> {"name":"string", "apikey":"string", "secretKey":"string"}</td>
-    </tr>
-    <tr>
-      <td>GET</td>
-      <td>/listexchanges</td>
-      <td>Lista as exchanges cadastradas. </td>
-    </tr>
-  </tbody></table>
+    <caption>Rotas de usuário </caption>
+    <tbody>
+      <tr>
+        <th>Método</th>
+        <th>Rota</th>
+        <th>Descrição</th>
+        <th>Parâmetros ( JSON )</th>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/user/new</td>
+        <td>Cria um novo usuário</td>
+        <td>name: string, email: string, passwd: string</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/user/login</td>
+        <td>Efetua o login</td>
+        <td>email: string, passwd: string</td>
+      </tr>
+      <tr>
+        <td>DELETE</td>
+        <td>/user/delete</td>
+        <td>Deleta a conta do próprio usuário logado</td>
+        <td>passwd: string</td>
+      </tr>
+      <tr>
+        <td>PUT</td>
+        <td>/user/update/passwd</td>
+        <td>Atualiza a senha do usuário logado</td>
+        <td>newPass:string, passwd: string</td>
+      </tr>
+      <tr>
+        <td>PUT</td>
+        <td>/user/update/email</td>
+        <td>Atualiza o email do usuário logado</td>
+        <td>newEmail: string, passwd: string</td>
+      </tr>
+    </tbody>
+  </table>
   
   <h4>Bibliotecas Utilizadas</h4>
  

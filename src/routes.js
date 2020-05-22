@@ -16,7 +16,6 @@ const loginUserMid = require('./validators/middlewares/user/delete')
 const newUserMid = require('./validators/middlewares/user/new')
 const updateUserEmailMid = require('./validators/middlewares/user/updateEmail')
 const updateUserPassMid = require('./validators/middlewares/user/updatePass')
-const updateUserPlanMid = require('./validators/middlewares/user/updatePlan')
 const deleteUserMid = require('./validators/middlewares/user/delete')
 
 //user Routes
@@ -34,9 +33,6 @@ routes.put('/user/update/email',updateUserEmailMid, userAuth, user_controller.up
 
 routes.put('/user/update/passwd',updateUserPassMid, userAuth, user_controller.updatePass)
 //{ passwd: string , newPass: string }
-
-routes.put('/user/update/plan',updateUserPlanMid, userAuth, user_controller.updatePlan)
-//{ planName: string }
         
 routes.delete('/user/delete',deleteUserMid, userAuth, user_controller.delete)
 //{ passwd: string }

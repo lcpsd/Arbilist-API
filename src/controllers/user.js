@@ -26,11 +26,6 @@ class User{
 		return res.json(result)
 	}
 
-	async updatePlan(req, res){
-		let result = await update_service.plan(req, user_model)
-		return res.json(result)
-	}
-
 	async updatePass(req, res){
 		let result = await update_service.passwd(req, user_model)
 		return res.json(result)

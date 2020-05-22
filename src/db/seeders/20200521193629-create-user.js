@@ -1,26 +1,20 @@
 'use strict';
 
+const bcrypt = require('bcryptjs')
+
+const passwd = 123
+const hash = bcrypt.hash(passwd)
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
 
-      Example:
-      return queryInterface.bulkInsert('People', [{
-        name: 'John Doe',
-        isBetaMember: false
+      return queryInterface.bulkInsert('User', [{
+        email: 'test@test',
+        passwd: hash
       }], {});
-    */
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
       return queryInterface.bulkDelete('People', null, {});
-    */
   }
 };

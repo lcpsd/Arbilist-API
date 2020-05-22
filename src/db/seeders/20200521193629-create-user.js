@@ -7,7 +7,7 @@ module.exports = {
       return queryInterface.bulkInsert('users', [{
         name:'tester',
         email: 'test@test',
-        passwd: "$2y$12$xeO36Ig4WY8yuGwuV.gdv.A4.DIC82JODdNUCrPmJbSG2RNPc2Y1W", //123
+        passwdHash: "$2y$12$xeO36Ig4WY8yuGwuV.gdv.A4.DIC82JODdNUCrPmJbSG2RNPc2Y1W", //123
         createdAt: new Date(),
         updatedAt: new Date()
       }], {});

@@ -1,6 +1,6 @@
 <h1 align="center"> Arbilist API </h1>
 
-# <h4>API que recupera e compara valores de diferentes exchanges cadastradas para mostrar os melhores preços de compra e venda com o intuíto de ajudar em operações de arbitragem com criptomoedas</h4> 
+# <h4>API que recupera e compara valores de diferentes exchanges com as moedas que fazem par com o Bitcoin ( BTC ) para mostrar os melhores preços de compra e venda com o intuíto de ajudar em operações de arbitragem com criptomoedas.</h4> 
 
 <h4>Instruções</h4>
   <ul>
@@ -14,7 +14,6 @@
     </ul>
   </ul>
 </h4>
-
 <div>
   <table>
     <caption>Rotas de usuário </caption>
@@ -101,8 +100,8 @@
       <tr>
         <td>GET</td>
         <td>/exchange/search</td>
-        <td>Retorna os preços nas exchanges cadastradas na conta do usuário do menor ao maior com a diferença percentual entre eles </td>
-        <td>N/A</td>
+        <td>Retorna os preços nas exchanges cadastradas na conta do usuário do menor ao maior com a diferença percentual entre eles</td>
+        <td>symbol: string (Apenas pares com btc, ex: LTC/BTC), btcQty: float / int</td>
       </tr>
     </tbody>
   </table>

@@ -95,10 +95,10 @@ routes.get('/exchange/list', userAuth, exchanges_controller.read)
 //
 
 routes.put('/exchange/update/name', userAuth, updateNameExchangeMid, exchanges_controller.updateName)
-//{oldName: string, newName: string}
+//{name: string, newName: string}
 
 routes.put('/exchange/update/keys', userAuth, updateKeysExchangeMid, exchanges_controller.updateKeys)
-//{name: string, publicKey: string, privateKey}
+//{name: string, publicKey: string, privateKey: string}
 
 routes.delete('/exchange/delete', userAuth, deleteExchangeMid, exchanges_controller.delete)
 //{name: string}

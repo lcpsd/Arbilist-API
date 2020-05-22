@@ -79,14 +79,14 @@ const exchanges_controller = require("./controllers/exchanges")
 
 //Exchange Validators
 const deleteExchangeMid = require('./validators/middlewares/exchanges/delete')
-const newExchangeMid = require('./validators/middlewares/exchanges/delete')
-const searchExchangeMid = require('./validators/middlewares/exchanges/delete')
-const updateKeysExchangeMid = require('./validators/middlewares/exchanges/delete')
-const updateNameExchangeMid = require('./validators/middlewares/exchanges/delete')
+const newExchangeMid = require('./validators/middlewares/exchanges/new')
+const searchExchangeMid = require('./validators/middlewares/exchanges/search')
+const updateKeysExchangeMid = require('./validators/middlewares/exchanges/updateKeys')
+const updateNameExchangeMid = require('./validators/middlewares/exchanges/updateName')
 
 //Exchange Routes
 routes.get('/exchange/search', userAuth, searchExchangeMid, exchanges_controller.search)
-//{symbol: string, btcQty: string}
+//{symbol: string (XXX/YYY), btcQty: float / int}
 
 routes.post('/exchange/new', userAuth, newExchangeMid, exchanges_controller.create)
 //{name: string, publicKey: string, secretKey: string}

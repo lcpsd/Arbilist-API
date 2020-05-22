@@ -2,7 +2,7 @@ const classMaker = require('../../tools/classMaker_tool')
 const diff_tool = require('../../tools/diff_tool')
 
 async function init(req, exchanges_model){
-    
+
     let {symbol} = req.body
     let {btcQty} = req.body
     let exchangeNames = new Array
@@ -20,7 +20,7 @@ async function init(req, exchanges_model){
         let exchangeObj  = await exchanges_model.findOne({ 
             raw: true, 
             where:{ 
-                name:exchangeName, userId: req.session.diff 
+                name:exchangeName, userId: req.session.userId
             }})
 
         if(!exchangeObj) continue

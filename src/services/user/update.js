@@ -1,4 +1,5 @@
 const validator = require('../../validators/generic')
+const bcrypt = require('bcryptjs')
 
 class init{
 	async email(req, userModel){

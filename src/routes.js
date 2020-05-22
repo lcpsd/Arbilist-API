@@ -12,7 +12,7 @@ const userAuth = require('./middlewares/userAuth')
 const adminAuth = require('./middlewares/adminAuth')
 
 //validators
-const loginUserMid = require('./validators/middlewares/user/delete')
+const loginUserMid = require('./validators/middlewares/user/login')
 const newUserMid = require('./validators/middlewares/user/new')
 const updateUserEmailMid = require('./validators/middlewares/user/updateEmail')
 const updateUserPassMid = require('./validators/middlewares/user/updatePass')
@@ -28,13 +28,13 @@ routes.post('/user', adminAuth, user_controller.readAll)
 routes.post('/user/login', loginUserMid, login_controller.userLogin)
 //{email: string, passwd: string}
         
-routes.put('/user/update/email',updateUserEmailMid, userAuth, user_controller.updateEmail)
+routes.put('/user/update/email', updateUserEmailMid, userAuth, user_controller.updateEmail)
 //{ newEmail: string, passwd: string }
 
-routes.put('/user/update/passwd',updateUserPassMid, userAuth, user_controller.updatePass)
+routes.put('/user/update/passwd', updateUserPassMid, userAuth, user_controller.updatePass)
 //{ passwd: string , newPass: string }
         
-routes.delete('/user/delete',deleteUserMid, userAuth, user_controller.delete)
+routes.delete('/user/delete', deleteUserMid, userAuth, user_controller.delete)
 //{ passwd: string }
 
 routes.get('/user/session', userAuth, user_controller.sessionData)

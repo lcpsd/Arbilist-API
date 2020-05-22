@@ -12,8 +12,8 @@ async function init(req, exchanges_model){
     try{
         await exchanges_model.create({
             name: req.body.name,
-            apiKey: req.body.apiKey,
-            secretKey: req.body.secretKey,
+            publicKey: req.body.publicKey,
+            privateKey: req.body.privateKey,
             userId: req.session.userId
         })
 

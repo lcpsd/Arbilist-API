@@ -94,12 +94,12 @@ routes.post('/exchange/new', userAuth, newExchangeMid, exchanges_controller.crea
 routes.get('/exchange/list', userAuth, exchanges_controller.read)
 //
 
-routes.post('/exchange/update/name', userAuth, updateNameExchangeMid, exchanges_controller.updateName)
+routes.put('/exchange/update/name', userAuth, updateNameExchangeMid, exchanges_controller.updateName)
 //{oldName: string, newName: string}
 
-routes.post('/exchange/update/keys', userAuth, updateKeysExchangeMid, exchanges_controller.updateKeys)
+routes.put('/exchange/update/keys', userAuth, updateKeysExchangeMid, exchanges_controller.updateKeys)
 //{name: string, publicKey: string, privateKey}
 
-routes.post('/exchange/delete', userAuth, deleteExchangeMid, exchanges_controller.delete)
+routes.delete('/exchange/delete', userAuth, deleteExchangeMid, exchanges_controller.delete)
 //{name: string}
 module.exports = routes

@@ -15,16 +15,9 @@ async function init(req, exchanges_model){
     let exchangeObjects = await exchanges_model.findAll({raw: true,
         where:{
             [Op.or]:[
-                {userId: 1}, {userId}
+                {userId}, {belongsSystem: true}
             ]
         }})
-
-    
-    exchangeObjects = exchangeObjects.filter(result => result.userId == 1)
-    
-    console.log(exchangeObjects)
-    process.exit()
-
 
     for(let obj  of exchangeObjects){
         exchangeNames.push(obj.name)

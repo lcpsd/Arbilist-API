@@ -29,7 +29,7 @@ module.exports = {
         onDelete: 'CASCADE',
         onUpdate: 'CASCADE'
       },
-      systemData:{
+      belongsSystem:{
         allowNull: true,
         type: Sequelize.BOOLEAN
       },

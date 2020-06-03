@@ -89,7 +89,7 @@ routes.post('/exchange/search', userAuth, searchExchangeMid, exchanges_controlle
 //{coin: string , btcQty: float / int}
 
 routes.post('/exchange/new', userAuth, newExchangeMid, exchanges_controller.create)
-//{name: string, publicKey: string, secretKey: string}
+//{name: string, privateKey: string, secretKey: string}
 
 routes.get('/exchange/list', userAuth, exchanges_controller.read)
 //

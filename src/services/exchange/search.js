@@ -1,5 +1,6 @@
 const classMaker = require('../../tools/classMaker_tool')
 const diff_tool = require('../../tools/diff_tool')
+const { Op } = require('sequelize')
 
 async function init(req, exchanges_model){
 
@@ -9,13 +10,21 @@ async function init(req, exchanges_model){
 
     coin += '/BTC'
 
-    let exchangeObjects = await exchanges_model.findAll({
-        raw: true
-    }, {
-        where: {
-            userId: req.session.userId
-        }
-    })
+    userId = req.session.userId
+
+    let exchangeObjects = await exchanges_model.findAll({raw: true,
+        where:{
+            [Op.or]:[
+                {userId: 1}, {userId}
+            ]
+        }})
+
+    
+    exchangeObjects = exchangeObjects.filter(result => result.userId == 1)
+    
+    console.log(exchangeObjects)
+    process.exit()
+
 
     for(let obj  of exchangeObjects){
         exchangeNames.push(obj.name)

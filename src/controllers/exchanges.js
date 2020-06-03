@@ -1,5 +1,5 @@
-const Database = require("../models/index")
-const exchangesModel = Database["Exchange"]
+const Models = require("../models/index")
+const exchangesModel = Models["Exchange"]
 
 const new_service = require('../services/exchange/new')
 const read_service = require('../services/exchange/read')

@@ -86,7 +86,7 @@ const updateNameExchangeMid = require('./validators/middlewares/exchanges/update
 
 //Exchange Routes
 routes.post('/exchange/search', userAuth, searchExchangeMid, exchanges_controller.search)
-//{symbol: string (XXX/YYY), btcQty: float / int}
+//{coin: string , btcQty: float / int}
 
 routes.post('/exchange/new', userAuth, newExchangeMid, exchanges_controller.create)
 //{name: string, publicKey: string, secretKey: string}

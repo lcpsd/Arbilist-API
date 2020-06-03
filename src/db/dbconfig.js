@@ -1,7 +1,7 @@
 module.exports = {
   "development": {
     "username": "root",
-    "password": "root",
+    "password": "12345678a",
     "database": "arbilist",
     "host": "localhost",
     "dialect": "mysql",

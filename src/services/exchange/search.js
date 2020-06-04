@@ -20,7 +20,7 @@ async function init(req, exchanges_model){
         }})
 
     for(let obj  of exchangeObjects){
-        exchangeNames.push(obj.name)
+        exchangeNames.push({name: obj.name})
     }
 
     //creates an array with all prices for every exchange in exchange objects

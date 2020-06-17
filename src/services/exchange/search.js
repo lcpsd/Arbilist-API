@@ -1,22 +1,26 @@
 const classMaker = require('../../tools/classMaker_tool')
 const diff_tool = require('../../tools/diff_tool')
+const { Op } = require('sequelize')
 
 async function init(req, exchanges_model){
 
-    let {symbol} = req.body
+    let {coin} = req.body
     let {btcQty} = req.body
     let exchangeNames = new Array
 
-    let exchangeObjects = await exchanges_model.findAll({
-        raw: true
-    }, {
-        where: {
-            userId: req.session.userId
-        }
-    })
+    coin += '/BTC'
+
+    userId = req.session.userId
+
+    let exchangeObjects = await exchanges_model.findAll({raw: true,
+        where:{
+            [Op.or]:[
+                {userId}, {belongsSystem: true}
+            ]
+        }})
 
     for(let obj  of exchangeObjects){
-        exchangeNames.push(obj.name)
+        exchangeNames.push({name: obj.name})
     }
 
     //creates an array with all prices for every exchange in exchange objects
@@ -35,10 +39,10 @@ async function init(req, exchanges_model){
             
         try{
             let exchange = classMaker(exchangeName, exchangeObj.apiKey, exchangeObj.secretKey)
-            let lastPrice = await exchange.currentPrice(symbol)
+            let lastPrice = await exchange.currentPrice(coin)
 
             symbolObject = {
-                symbol: symbol,
+                symbol: coin,
                 currentPrice: lastPrice,
                 exchange: exchangeName,
                 coinsQty: parseFloat( parseFloat(  parseFloat(btcQty) / lastPrice ).toFixed(2))

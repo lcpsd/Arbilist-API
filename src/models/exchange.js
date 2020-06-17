@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     publicKey: DataTypes.STRING,
     privateKey: DataTypes.STRING,
-    userId: DataTypes.INTEGER
+    userId: DataTypes.INTEGER,
+    belongsSystem: DataTypes.BOOLEAN
   }, {});
   Exchange.associate = function(models) {
     Exchange.belongsTo(models.User, {foreignKey: 'userId', as: 'user'})

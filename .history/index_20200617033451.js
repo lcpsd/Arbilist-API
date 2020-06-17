@@ -5,10 +5,13 @@ const app = Express()
 const routes = require('./src/routes')
 const bp = require('body-parser')
 const session = require("express-session")
-const cookieParser = require('cookie-parser')
+const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session')
 
-app.use(cookieParser());
 app.use(session({ secret:'batman_and_robin' }))
+
+app.use(cookieParser())
+app.use(cookieSession())
 
 app.use(bp.json())
 app.use(bp.urlencoded({extended: false}))

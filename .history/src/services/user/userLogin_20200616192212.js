@@ -13,7 +13,7 @@ async function init(req, userModel){
 	req.session.email = req.body.email
 	req.session.userId = obj.id
 
-	return {success:'logged', session: req.cookies}
+	return {success:'logged'}
 }
 
 module.exports = init

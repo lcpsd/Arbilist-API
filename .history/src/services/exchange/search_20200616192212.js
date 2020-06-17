@@ -45,7 +45,7 @@ async function init(req, exchanges_model){
             }
 
             symbolsArray.push(symbolObject)
-        }catch(error){
+        }catch{
             continue
         }
             

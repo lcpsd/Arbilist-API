@@ -10,10 +10,10 @@ async function init(req, userModel){
     
 	if(!check) return {error: 'incorrect_password'}
 
-	req.session.email = req.body.email
-	req.session.userId = obj.id
+	//req.session.email = req.body.email
+	//req.session.userId = obj.id
 
-	return {success:'logged', session: req.cookies}
+	return {success:'logged', session: req.session}
 }
 
 module.exports = init

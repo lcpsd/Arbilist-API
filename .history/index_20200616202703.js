@@ -1,4 +1,4 @@
-require('dotenv').config()
+dotenv = require('dotenv').config()
 
 const Express = require('express')
 const app = Express()
@@ -14,4 +14,5 @@ app.use(bp.urlencoded({extended: false}))
 app.use('/', routes)
 
 let port = process.env.PORT || 3000
+console.log(process.env.NODE_ENV)
 app.listen(port, () => console.log('serverOK'))

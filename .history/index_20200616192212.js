@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const Express = require('express')
 const app = Express()
 const routes = require('./src/routes')
@@ -13,5 +11,4 @@ app.use(bp.urlencoded({extended: false}))
 
 app.use('/', routes)
 
-let port = process.env.PORT || 3000
-app.listen(port, () => console.log('serverOK'))
+app.listen(8787, () => console.log('serverOK'))

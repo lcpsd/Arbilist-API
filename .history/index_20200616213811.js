@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 const Express = require('express')
 const app = Express()
 const routes = require('./src/routes')

@@ -27,8 +27,6 @@ routes.post('/user', adminAuth, user_controller.readAll)
         
 routes.post('/user/login', loginUserMid, login_controller.userLogin)
 //{email: string, passwd: string}
-
-routes.get('/user/logoff', login_controller.userLogoff)
         
 routes.put('/user/update/email', updateUserEmailMid, userAuth, user_controller.updateEmail)
 //{ newEmail: string, passwd: string }

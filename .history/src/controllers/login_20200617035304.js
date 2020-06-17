@@ -12,7 +12,7 @@ class login{
 	}
 
 	async userLogoff(req, res){
-		let result = await logoff_service(req, res)
+		let result = await logoff_service()
 		return res.json(result)
 	}
 	async adminLogin(req, res){

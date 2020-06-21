@@ -9,7 +9,7 @@ async function init(req, res, next){
 	if(!checkExists) return res.json({error:"not_registered"})
 
 	if(!req.body.passwd){
-		return res.json({msg:'missing_parameter_passwd'})
+		return res.json({error:'missing_parameter_passwd'})
 	}
 
 	next()

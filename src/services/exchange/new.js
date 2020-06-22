@@ -1,9 +1,13 @@
+const {Op} = require('sequelize')
 
 async function init(req, exchanges_model){
 
     let findOne = await exchanges_model.findOne({
         where: {
-            name: req.body.name, userId: req.session.userId
+            [Op.or]:[
+                {name: req.body.name, userId: req.session.userId},
+                {name: req.body.name, userId: 1}
+            ]
         }
     })
 

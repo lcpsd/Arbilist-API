@@ -5,9 +5,11 @@ const userLogin_service = require('../services/user/userLogin')
 const adminLogin_service = require('../services/admin/adminLogin')
 const logoff_service = require('../services/user/logoff')
 
+const jwt = require('jsonwebtoken')
+
 class login{
 	async userLogin(req, res){
-		let result = await userLogin_service(req, user_model)
+		let result = await userLogin_service(req, user_model, jwt, jwtSecret)
 		return res.json(result)
 	}
 
@@ -16,7 +18,7 @@ class login{
 		return res.json(result)
 	}
 	async adminLogin(req, res){
-		let result = await adminLogin_service(req, admin_model)
+		let result = await adminLogin_service(req, admin_model, jwt, jwtSecret)
 		return res.json(result)
 	}
 

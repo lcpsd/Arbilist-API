@@ -1,0 +1,1 @@
+module.exports = "#B3FF2D%999"

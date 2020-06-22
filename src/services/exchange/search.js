@@ -15,9 +15,7 @@ async function init(req, exchanges_model){
         }
     })
 
-    for(let obj  of exchangeObjects){
-        exchangeNames.push(obj.name)
-    }
+    exchangeObjects.forEach(obj => exchangeNames.push(obj.name))
 
     //creates an array with all prices for every exchange in exchange objects
     let symbolsArray = new Array
@@ -61,36 +59,20 @@ async function init(req, exchanges_model){
     arrayOfPrices = arrayOfPrices.sort()
 
     //find diff between most cheapest exchange and most expensive
-    let i = 1
-    let minorValue = arrayOfPrices[0]
-    while(i <= arrayOfPrices.length){
+    for(let i; i <= arrayOfPrices.length; i++){
         let valueDiff = diff_tool(arrayOfPrices[i], minorValue)
         valueDiff = parseFloat( ( valueDiff * 1000 ).toFixed(2) )
 
-        for(let obj of symbolsArray){
-            if(obj.currentPrice == arrayOfPrices[i]){
-                obj.diff = valueDiff
-            }
-        }
+        symbolsArray.forEach(obj => obj.currentPrice == arrayOfPrices[i] ? obj.diff = valueDiff : null)
 
         i++
 
     }
 
     //sort objects
+
     let sortedObjects = new Array
-    for(let value of arrayOfPrices){
-
-        for(let obj of symbolsArray){
-
-            if(value == obj.currentPrice){
-                sortedObjects.push(obj)
-            }
-
-        }
-
-    }
-
+    arrayOfPrices.forEach(value => symbolsArray.forEach(obj => value == obj.currentPrice ? sortedObjects.push(obj) : null ))
     return sortedObjects
 
 }

@@ -1,5 +1,6 @@
 const classMaker = require('../../tools/classMaker_tool')
 const diff_tool = require('../../tools/diff_tool')
+const {Op} = require('sequelize')
 
 async function init(req, exchanges_model){
 
@@ -11,28 +12,36 @@ async function init(req, exchanges_model){
         raw: true
     }, {
         where: {
-            userId: req.session.userId
+            [Op.or] : [
+                { userId: req.session.userId}, { userId: 1 }
+            ]
         }
     })
 
     exchangeObjects.forEach(obj => exchangeNames.push(obj.name))
-
+    
     //creates an array with all prices for every exchange in exchange objects
     let symbolsArray = new Array
     for(let exchangeName of exchangeNames){
 
         let exchangeObj  = await exchanges_model.findOne({ 
             raw: true, 
-            where:{ 
-                name:exchangeName, userId: req.session.userId
-            }})
 
+                where: {
+                    [Op.or] : [
+                        { name:exchangeName, userId: req.session.userId }, { name:exchangeName, userId: 1 }
+                    ]
+                }
+            })
+        
         if(!exchangeObj) continue
 
         let symbolObject = new Object
-            
+        
         try{
+            
             let exchange = classMaker(exchangeName, exchangeObj.apiKey, exchangeObj.secretKey)
+            
             let lastPrice = await exchange.currentPrice(symbol)
 
             symbolObject = {
@@ -44,6 +53,7 @@ async function init(req, exchanges_model){
 
             symbolsArray.push(symbolObject)
         }catch(error){
+            
             continue
         }
             

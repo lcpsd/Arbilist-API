@@ -6,6 +6,7 @@ const adminLogin_service = require('../services/admin/adminLogin')
 const logoff_service = require('../services/user/logoff')
 
 const jwt = require('jsonwebtoken')
+const jwtSecret = require('../middlewares/config/jwtPass')
 
 class login{
 	async userLogin(req, res){

@@ -5,7 +5,7 @@ module.exports = {
     "password": process.env.DB_PASS,
     "database": process.env.DB_NAME,
     "host": process.env.DB_HOST,
-    "dialect": "mysql",
+    "dialect": "postgres",
     "port":process.env.DB_PORT,
     "operatorsAliases": false
   },
@@ -14,7 +14,7 @@ module.exports = {
     "password": process.env.DB_PASS,
     "database": process.env.DB_NAME,
     "host": process.env.DB_HOST,
-    "dialect": "mysql",
+    "dialect": "postgres",
     "port":process.env.DB_PORT,
     "operatorsAliases": false
   },
@@ -23,7 +23,7 @@ module.exports = {
     "password": process.env.DB_PASS,
     "database": process.env.DB_NAME,
     "host": process.env.DB_HOST,
-    "dialect": "mysql",
+    "dialect": "postgres",
     "port":process.env.DB_PORT,
     "operatorsAliases": false
   }

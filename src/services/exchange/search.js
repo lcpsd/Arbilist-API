@@ -19,14 +19,13 @@ async function init(req, exchanges_model){
     })
 
     exchangeObjects.forEach(obj => exchangeNames.push(obj.name))
-    
+
     //creates an array with all prices for every exchange in exchange objects
     let symbolsArray = new Array
     for(let exchangeName of exchangeNames){
 
-        let exchangeObj  = await exchanges_model.findOne({ 
+        let exchangeObj = await exchanges_model.findOne({ 
             raw: true, 
-
                 where: {
                     [Op.or] : [
                         { name:exchangeName, userId: req.session.userId }, { name:exchangeName, userId: 1 }
@@ -52,10 +51,7 @@ async function init(req, exchanges_model){
             }
 
             symbolsArray.push(symbolObject)
-        }catch(error){
-            
-            continue
-        }
+        }catch(error) {continue}
             
     }
     

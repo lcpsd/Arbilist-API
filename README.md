@@ -101,7 +101,7 @@
         <td>N/A</td>
       </tr>
       <tr>
-        <td>GET</td>
+        <td>POST</td>
         <td>/exchange/search</td>
         <td>Retorna os preços nas exchanges cadastradas na conta do usuário do menor ao maior com a diferença percentual entre eles</td>
         <td>symbol: string (Apenas pares com btc, ex: LTC/BTC), btcQty: float / int</td>

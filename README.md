@@ -4,13 +4,16 @@
 
 <h4>Instruções</h4>
   <ul>
-    <li>Crie um banco com o nome "arbilist" no mysql</li>
+    <li>Baixe o docker </li>
+    <li>crie um container com o comando "docker run --name /nomeContainer/ -e POSTGRES_PASSWORD=/senha/ -p 5432:5432  -d postgres"</li>
+    <li>Acesse o container com o pgAdmin e crie um banco de dados chamado "arbilist"
+    <li>no arquivo ".env" na raiz do projeto, coloque os dados de conexão com o banco de dados
     <li>Execute os seguintes comandos na pasta do projeto através terminal:</li>
     <ul>
-      <li>npm install  ( instala todos os pacotes )</li>
-      <li>npm install -g mysql2 ( instala o pacote mysql de forma global )
-      <li>npx sequelize db:seed:all ( Preenche o banco de dados com api's para o consumo ) e um usuário: "test@test":"123</li>
-      <li>nodemon index ( inicia a aplicação na porta 8787 )</li>
+      <li>npm i  ( instala todos os pacotes )</li>
+      <li>npx sequelize-cli db:migrate</li>
+      <li>npx sequelize-cli db:seed:all ( Preenche o banco de dados com api's para o consumo ) e um usuário: "test@test":"123</li>
+      <li>npm run start ( inicia a aplicação na porta 8787 )</li>
     </ul>
   </ul>
 </h4>

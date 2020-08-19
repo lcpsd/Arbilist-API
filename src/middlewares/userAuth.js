@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const jwtPass = require('../middlewares/config/jwtPass')
 function init(req, res, next){
-	/*
+	
 	if(req.headers['authorization']){
 		const splitToken = req.headers['authorization'].split(' ')
 
@@ -14,7 +14,7 @@ function init(req, res, next){
 	}
 
 	return res.json({msg:'invalid_headers'})
-	*/
+	
 	next()
 }
 

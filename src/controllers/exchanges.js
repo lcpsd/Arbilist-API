@@ -6,6 +6,7 @@ const read_service = require('../services/exchange/read')
 const update_service = require('../services/exchange/update')
 const delete_service = require('../services/exchange/delete')
 const search_service = require('../services/exchange/search')
+const publicSearch_service = require('../services/exchange/publicSearch')
 
 class exchangesController{
 
@@ -38,6 +39,10 @@ class exchangesController{
         
         let result = await search_service(req, exchangesModel)
         return res.json(result)
+    }
+
+    async publicSearch(req, res){
+        return res.json(await publicSearch_service(req, exchangesModel))
     }
 
 

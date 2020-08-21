@@ -86,7 +86,12 @@ const searchExchangeMid = require('./validators/middlewares/exchanges/search')
 const updateKeysExchangeMid = require('./validators/middlewares/exchanges/updateKeys')
 const updateNameExchangeMid = require('./validators/middlewares/exchanges/updateName')
 
+
 //Exchange Routes
+
+routes.post('/public/exchange/search', searchExchangeMid, exchanges_controller.publicSearch)
+//{symbol: string (XXX/YYY), btcQty: float / int}
+
 routes.post('/exchange/search', userAuth, searchExchangeMid, exchanges_controller.search)
 //{symbol: string (XXX/YYY), btcQty: float / int}
 

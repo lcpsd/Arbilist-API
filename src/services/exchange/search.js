@@ -80,7 +80,7 @@ async function init(req, exchanges_model){
     let sortedObjects = new Array
     arrayOfPrices.forEach(value => symbolsArray.forEach(obj => {
         let check = sortedObjects.some(objSorted => obj.exchange == objSorted.exchange)
-        if(value == obj.currentPrice && !check) sortedObjects.push(obj) 
+        if(value == obj.currentPrice && !check && value != undefined) sortedObjects.push(obj) 
     }))
 
 }

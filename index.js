@@ -7,7 +7,7 @@ const bp = require('body-parser')
 const session = require("express-session")
 let cors = require('cors')
 
-app.use(cors())
+app.use(cors({origin: process.env.CLIENT_ORIGIN}))
 app.use(session({ secret:'vidaLokaTambemAma', cookie:{maxAge: 3600000}}))
 
 app.use(bp.json())

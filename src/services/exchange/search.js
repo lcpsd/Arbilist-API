@@ -75,11 +75,13 @@ async function init(req, exchanges_model){
 
     }
 
-    //sort objects
+    //sort objects and verify that's not duplicated on final array
 
     let sortedObjects = new Array
-    arrayOfPrices.forEach(value => symbolsArray.forEach(obj => value == obj.currentPrice ? sortedObjects.push(obj) : null ))
-    return sortedObjects
+    arrayOfPrices.forEach(value => symbolsArray.forEach(obj => {
+        let check = sortedObjects.some(objSorted => obj.exchange == objSorted.exchange)
+        if(value == obj.currentPrice && !check) sortedObjects.push(obj) 
+    }))
 
 }
 

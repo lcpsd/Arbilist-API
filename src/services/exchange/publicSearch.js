@@ -79,7 +79,6 @@ async function init(req, exchanges_model){
         let check = sortedObjects.some(objSorted => obj.exchange == objSorted.exchange)
         if(value == obj.currentPrice && !check) sortedObjects.push(obj) 
     }))
-    console.log(sortedObjects)
     return sortedObjects
 
 }

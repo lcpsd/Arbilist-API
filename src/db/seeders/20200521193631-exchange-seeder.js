@@ -10,8 +10,8 @@ module.exports = {
 
       return queryInterface.bulkInsert('Exchanges', [{
         name:"binance",
-        publicKey:"a2qJI0XJTp6RMlSk8CMY1H5WTwjXOiodQkojCYflku14Rm5XIWgqORT9ZtOctDVh",
-        privateKey:"ll2VgG2XwEEJNtIL9UZ54fiTZebHr0ENRA22MCsfaJMPrdBah3SsLSYRdweurFvx",
+        publicKey:"H42mVW7cFGMNGdXzEEZPm9tjNqDsJ5oSB7KCmePm1McCfXwcWvN2bLgInuLhunw2",
+        privateKey:"nSbVXSE9fS1XvNsA24cfJYcb8auV4gOnH084CCVzV7i6RyEmHYSHMnLTOQaqfjQR",
         userId: userObj.id,
         createdAt: new Date(),
         updatedAt: new Date()

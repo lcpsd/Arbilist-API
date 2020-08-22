@@ -68,14 +68,18 @@ async function init(req, exchanges_model){
         let valueDiff = diff_tool(price, arrayOfPrices[0])
         valueDiff = parseFloat( ( valueDiff * 100 ).toFixed(2) )
 
-        symbolsArray.forEach(obj => obj.currentPrice ==price ? obj.diff = valueDiff : null)
+        symbolsArray.forEach(obj => obj.currentPrice == price ? obj.diff = valueDiff : null)
 
     })
 
-    //sort objects
+    //sort objects and verify that's not duplicated on final array
 
     let sortedObjects = new Array
-    arrayOfPrices.forEach(value => symbolsArray.forEach(obj => value == obj.currentPrice ? sortedObjects.push(obj) : null ))
+    arrayOfPrices.forEach(value => symbolsArray.forEach(obj => {
+        let check = sortedObjects.some(objSorted => obj.exchange == objSorted.exchange)
+        if(value == obj.currentPrice && !check) sortedObjects.push(obj) 
+    }))
+    console.log(sortedObjects)
     return sortedObjects
 
 }

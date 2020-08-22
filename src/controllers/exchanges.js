@@ -42,7 +42,8 @@ class exchangesController{
     }
 
     async publicSearch(req, res){
-        return res.json(await publicSearch_service(req, exchangesModel))
+        let result = await publicSearch_service(req, exchangesModel)
+        return res.json(result)
     }
 
 

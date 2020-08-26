@@ -6,8 +6,8 @@
   <ul>
     <li>Baixe o docker </li>
     <li>crie um container com o comando "docker run --name /nomeContainer/ -e POSTGRES_PASSWORD=/senha/ -p 5432:5432  -d postgres"</li>
-    <li>Acesse o container com o pgAdmin e crie um banco de dados chamado "arbilist"
-    <li>no arquivo ".env" na raiz do projeto, coloque os dados de conexão com o banco de dados
+    <li>Acesse o container com o pgAdmin e crie um banco de dados chamado "arbilist"</li>
+    <li>no arquivo ".env" na raiz do projeto, coloque os dados de conexão com o banco de dados e as credênciais de acesso do e-mail do suporte ( para recuperação de senha )</li>
     <li>Execute os seguintes comandos na pasta do projeto através terminal:</li>
     <ul>
       <li>npm i  ( instala todos os pacotes )</li>
@@ -56,6 +56,12 @@
         <td>/user/update/email</td>
         <td>Atualiza o email do usuário logado</td>
         <td>newEmail: string, passwd: string</td>
+      </tr>
+      <tr>
+        <td>post</td>
+        <td>/user/passrecover</td>
+        <td>Envia uma senha temporária para o e-mail informado</td>
+        <td>email: string</td>
       </tr>
     </tbody>
   </table>

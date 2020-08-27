@@ -9,6 +9,7 @@ const update_service = require('../services/user/update')
 const readAll_service = require('../services/user/readUsers')
 const delete_service = require('../services/user/delete')
 const recoverPassword_service = require('../services/user/recoverPassword')
+const confirmPassRecover_service = require('../services/user/confirmNewPassword')
 
 class User{
     
@@ -41,6 +42,12 @@ class User{
 		let result = await recoverPassword_service(req, user_model)
 		return res.json(result)
 	}
+
+	async confirmPassRecover(req, res){
+		let result = await confirmPassRecover_service(req, user_model)
+		return res.json(result)
+	}
+
 	async sessionData(req, res){
 		return res.json(req.session)
 	}

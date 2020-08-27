@@ -17,6 +17,8 @@ const newUserMid = require('./validators/middlewares/user/new')
 const updateUserEmailMid = require('./validators/middlewares/user/updateEmail')
 const updateUserPassMid = require('./validators/middlewares/user/updatePass')
 const deleteUserMid = require('./validators/middlewares/user/delete')
+const passRecoverMid = require('./validators/middlewares/user/passRecover')
+const confirmPassRecoverMid = require('./validators/middlewares/user/confirmPassRecover')
 
 //user Routes
 routes.post('/user/new', newUserMid, user_controller.create)
@@ -28,8 +30,11 @@ routes.post('/user', adminAuth, user_controller.readAll)
 routes.post('/user/login', loginUserMid, login_controller.userLogin)
 //{email: string, passwd: string}
 
-routes.post('/user/passrecover', user_controller.passRecover)
+routes.post('/user/passrecover',passRecoverMid, user_controller.passRecover)
 //{email: string}
+
+routes.get('/user/passrecover/confirm', confirmPassRecoverMid, user_controller.confirmPassRecover)
+//query: token: string & newpass: string
 
 routes.get('/user/logoff', login_controller.userLogoff)
         
@@ -88,6 +93,7 @@ const newExchangeMid = require('./validators/middlewares/exchanges/new')
 const searchExchangeMid = require('./validators/middlewares/exchanges/search')
 const updateKeysExchangeMid = require('./validators/middlewares/exchanges/updateKeys')
 const updateNameExchangeMid = require('./validators/middlewares/exchanges/updateName')
+const { passRecover } = require('./controllers/user')
 
 
 //Exchange Routes

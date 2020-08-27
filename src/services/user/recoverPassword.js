@@ -2,29 +2,32 @@ const passgenerator = require('generate-password')
 const bcrypt = require('bcryptjs')
 const validator = require('../../validators/generic')
 const nodemailer = require('nodemailer')
-const Axios = require('axios').default
+const njwt = require('njwt')
+const models = require('../../models/index')
+const jwtSecret = require('../../middlewares/config/jwtPass')
+const user_model = models['User']
 
 async function init(req, userModel){
     
     const {email} = req.body
 
     //check if e-mail exists
-    const checkEmail = await validator.checkEmail(req.body.email, userModel)
+    const checkEmail = await validator.checkEmail(email, user_model)
 
     if(!checkEmail) return {error: "this_e-mail_dosen't_exists"}
 
     const supportEmail = process.env.SUPPORT_EMAIL
     const supportSecret = process.env.SUPPORT_SECRET
 
-    //Temp Password Gen
-    const tempPass = passgenerator.generate({lenght:10, numbers: true, symbols: true})
-    const salt = await bcrypt.genSalt(10)
-    const passwordHash = await bcrypt.hash(tempPass, salt)
+    //get user info and creates a token that will send to user e-mail 
+    const userObj = await userModel.findOne({raw: true}, {where: {email: email}})
+    const userId = userObj.id
+    const jwtInfo = { email: email, id: userId}
+    const token = njwt.create(jwtInfo, jwtSecret)
 
-    //Update user password
-    await userModel.update({passwordHash: passwordHash}, {where:{email: email}})
+    token.setExpiration(new Date().getTime() + 60*1000)
 
-    //Transporter Class
+    //Transporter instance
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -38,17 +41,19 @@ async function init(req, userModel){
         from: 'passwordrecover@arbilist.com',
         to: email,
         subject: 'do not answer',
-        text: `Dear user, your temp password is: ${tempPass}`
+        text: `Dear user, your temp password recovery link is: ${process.env.PASSWORD_RECOVER_PAGE + token.compact()}`
     };
 
     if(process.env.SUPPORT_EMAIL == {error: 'support_config_needed_in_environment'})
+
+    console.log('ok')
 
     //try to send e-mail
     try{
         transporter.sendMail(mailInfo)
         return {success:"new_password_sended"}
     }catch(error){
-        return {error:"internal_server_error"}
+        return console.log(error)
     }
     
 }

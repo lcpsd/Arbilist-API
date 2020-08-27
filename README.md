@@ -60,8 +60,14 @@
       <tr>
         <td>post</td>
         <td>/user/passrecover</td>
-        <td>Envia uma senha temporária para o e-mail informado</td>
+        <td>Envia uma token para o e-mail informado ( Página de input da nova senha necessária para confirmação )</td>
         <td>email: string</td>
+      </tr>
+      <tr>
+        <td>get</td>
+        <td>/user/passrecover/confirm?token=stringToken&newpass=stringPass</td>
+        <td>Recebe o token enviado por email e a nova senha</td>
+        <td>query params: token= : string, newpass= : string</td>
       </tr>
     </tbody>
   </table>

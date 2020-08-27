@@ -46,8 +46,6 @@ async function init(req, userModel){
 
     if(process.env.SUPPORT_EMAIL == {error: 'support_config_needed_in_environment'})
 
-    console.log('ok')
-
     //try to send e-mail
     try{
         transporter.sendMail(mailInfo)

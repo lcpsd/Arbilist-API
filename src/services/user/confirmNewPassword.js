@@ -23,7 +23,7 @@ async function init(req, user_model){
         let hash = await bcrypt.hash(newpass, salt)
         
         //update user
-        let result = await user_model.update({passswordHash: hash}, {where:{id: userId}})
+        await user_model.update({passswordHash: hash}, {where:{id: userId}})
         
         return {success:'user_updated'}
     

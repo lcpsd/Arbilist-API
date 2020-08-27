@@ -1,5 +1,3 @@
-const passgenerator = require('generate-password')
-const bcrypt = require('bcryptjs')
 const validator = require('../../validators/generic')
 const nodemailer = require('nodemailer')
 const njwt = require('njwt')
